@@ -9,7 +9,9 @@ export default {
   name: 'MhTitle',
 
   setup() {
+    const nuxtApp = useNuxtApp()
 
+    nuxtApp.$api.test.testMethod()
   }
 }
 </script>
