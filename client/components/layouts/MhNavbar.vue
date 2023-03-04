@@ -8,25 +8,20 @@
   </nav>
 </template>
 
-<script>
-export default {
-  name: 'MhNavbar',
+<script setup>
+import { computed } from 'vue'
 
-  props: {
-    isDark: {
-      type: Boolean,
-      default: false
-    }
-  },
-
-  computed: {
-    navbarClasses() {
-      const BASE_CLASS = 'mh-navbar'
-
-      return [BASE_CLASS, this.isDark && BASE_CLASS + '_theme_dark']
-    }
+const props = defineProps({
+  isDark: {
+    type: Boolean,
+    default: false
   }
-}
+})
+
+const navbarClasses = computed(() => {
+  const BASE_CLASS = 'mh-navbar'
+  return [BASE_CLASS, props.isDark && BASE_CLASS + '_theme_dark']
+})
 </script>
 
 <style lang="scss" scoped>

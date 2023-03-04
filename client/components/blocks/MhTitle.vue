@@ -4,16 +4,9 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'MhTitle',
-
-  setup() {
-    const nuxtApp = useNuxtApp()
-
-    nuxtApp.$api.test.testMethod()
-  }
-}
+<script setup>
+const nuxtApp = useNuxtApp()
+nuxtApp.$api.test.testMethod()
 </script>
 
 <style lang="scss" scoped>

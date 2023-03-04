@@ -6,37 +6,28 @@
   </header>
 </template>
 
-<script>
-export default {
-  name: 'MhHeader',
+<script setup>
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 
-  data() {
-    return {
-      isSticked: false
-    }
-  },
+const isSticked = ref(false)
 
-  computed: {
-    headerClasses() {
-      const BASE_CLASS = 'mh-header'
+const headerClasses = computed(() => {
+  const BASE_CLASS = 'mh-header'
+  return [BASE_CLASS, isSticked.value && BASE_CLASS + '_is_sticked']
+})
 
-      return [BASE_CLASS, this.isSticked && BASE_CLASS + '_is_sticked']
-    }
-  },
+// window
 
-  mounted() {
-    window.addEventListener('scroll', this.onScroll)
-  },
+onMounted(() => {
+  window.addEventListener('scroll', onScroll)
+})
 
-  beforeUnmount() {
-    window.removeEventListener('scroll', this.onScroll)
-  },
+onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll)
+})
 
-  methods: {
-    onScroll() {
-      this.isSticked = window.top.scrollY !== 0
-    }
-  }
+const onScroll = () => {
+  isSticked.value = window.top.scrollY !== 0
 }
 </script>
 
