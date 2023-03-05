@@ -1,7 +1,7 @@
 <template>
   <div>
-    <MhHeader />
-    <BlockMhTitle />
+    <LayoutHeader />
+    <BlockTitle />
     sfsd
     sdsdf
     sdfsdfsd

@@ -1,7 +1,7 @@
 <template>
   <header :class="headerClasses">
     <div class="mh-content-container">
-      <MhNavbar :is-dark="isSticked" />
+      <UiNavbar :is-dark="isSticked" />
     </div>
   </header>
 </template>

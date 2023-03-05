@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   components: [
     '~/components',
-    '~/components/layouts',
+    { path: '~/components/layouts', prefix: 'Layout' },
     { path: '~/components/blocks', prefix: 'Block' }
   ],
 
