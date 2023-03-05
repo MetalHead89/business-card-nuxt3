@@ -1,0 +1,108 @@
+<template>
+  <LayoutControlWrapper
+    :label="label"
+    :is-form-control="isFormControl"
+  >
+    <div :class="inputContainerClasses">
+      <input
+        :value="modelValue"
+        v-bind="$attrs"
+        autocomplete="new-password"
+        @input="handleInputInput"
+        @focus="handleInputFocus"
+        @blur="handleInputBlur"
+      >
+    </div>
+  </LayoutControlWrapper>
+</template>
+
+<script>
+export default {
+  inheritAttrs: false
+}
+</script>
+
+<script setup>
+import { ref, computed } from 'vue'
+
+const emit = defineEmits(['update:modelValue'])
+
+const props = defineProps({
+  modelValue: {
+    type: [String, Number],
+    default: ''
+  },
+
+  isFormControl: {
+    type: Boolean,
+    default: true
+  },
+
+  label: {
+    type: String,
+    default: ''
+  }
+})
+
+const isFocus = ref(false)
+
+const inputContainerClasses = computed(() => {
+  const BASE_CLASS = 'ui-input'
+  return [
+    BASE_CLASS,
+    isFocus.value && `${BASE_CLASS}_focused`,
+    props.modelValue && `${BASE_CLASS}_has-content`
+  ]
+})
+
+const handleInputFocus = () => {
+  isFocus.value = true
+}
+
+const handleInputBlur = () => {
+  isFocus.value = false
+}
+
+const handleInputInput = ({ target: { value } }) => {
+  emit('update:modelValue', value)
+}
+</script>
+
+<style lang="scss">
+$ui-input: '.ui-input';
+
+#{$ui-input} {
+  width: 100%;
+  position: relative;
+
+  input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: $input-padding;
+    border: none;
+    border-bottom: 2px solid $muted-gray;
+
+    &:focus, &:active {
+      outline: none;
+    }
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 0;
+    background: $gray;
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s ease-out;
+  }
+
+  &_focused, &_has-content {
+    &::before {
+      width: 100%;
+    }
+  }
+}
+</style>

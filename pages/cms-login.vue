@@ -1,5 +1,7 @@
 <template>
-  <div class="login-page" />
+  <div class="login-page">
+    <CardLogin />
+  </div>
 </template>
 
 <script setup>
@@ -10,5 +12,8 @@
   width: 100%;
   height: 100%;
   background: $purple-blue-gradient;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

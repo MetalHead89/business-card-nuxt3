@@ -1,6 +1,6 @@
 <template>
   <header :class="headerClasses">
-    <div class="mh-content-container">
+    <div class="content-container">
       <UiNavbar :is-dark="isSticked" />
     </div>
   </header>

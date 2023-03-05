@@ -3,6 +3,21 @@ $blue:                                                                          
 $purple:                                                                                          #ab00ff;
 $white:                                                                                           #ffffff;
 $black:                                                                                           #000000;
+$muted-gray:                                                                                      #d9d9d9;
+$gray:                                                                                            #7f7f7f;
 
 // gradients
 $purple-blue-gradient:                                                                              linear-gradient(90deg, #ab00ff 0%, #4628ba 100%);
+
+// sizes
+$base-border-radius:                                                                                10px;
+$base-form-margin:                                                                                  20px;
+$base-control-width:                                                                                600px;
+
+// cards
+$card-background:                                                                                 #ffffff;
+$card-padding:                                                                                      20px;
+$card-border-radius:                                                                                $base-border-radius;
+
+// inputs
+$input-padding:                                                                                     10px;

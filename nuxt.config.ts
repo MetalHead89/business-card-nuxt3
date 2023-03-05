@@ -3,7 +3,8 @@ export default defineNuxtConfig({
   components: [
     '~/components',
     { path: '~/components/layouts', prefix: 'Layout' },
-    { path: '~/components/blocks', prefix: 'Block' }
+    { path: '~/components/blocks', prefix: 'Block' },
+    { path: '~/components/cards', prefix: 'Card' }
   ],
 
   css: ['@/assets/styles/global.scss'],
