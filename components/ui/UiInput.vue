@@ -4,6 +4,12 @@
     :is-form-control="isFormControl"
   >
     <div :class="inputContainerClasses">
+      <UiSvgIcon
+        v-if="beforeTextIcon"
+        :icon="beforeTextIcon"
+        class="before-text-icon"
+      />
+
       <input
         :value="modelValue"
         v-bind="$attrs"
@@ -41,6 +47,11 @@ const props = defineProps({
   label: {
     type: String,
     default: ''
+  },
+
+  beforeTextIcon: {
+    type: String,
+    default: ''
   }
 })
 
@@ -51,7 +62,8 @@ const inputContainerClasses = computed(() => {
   return [
     BASE_CLASS,
     isFocus.value && `${BASE_CLASS}_focused`,
-    props.modelValue && `${BASE_CLASS}_has-content`
+    props.modelValue && `${BASE_CLASS}_has-content`,
+    props.beforeTextIcon && `${BASE_CLASS}_has-before-icon`
   ]
 })
 
@@ -69,9 +81,9 @@ const handleInputInput = ({ target: { value } }) => {
 </script>
 
 <style lang="scss">
-$ui-input: '.ui-input';
+$before-icon-size: 22px;
 
-#{$ui-input} {
+.ui-input {
   width: 100%;
   position: relative;
 
@@ -84,6 +96,10 @@ $ui-input: '.ui-input';
 
     &:focus, &:active {
       outline: none;
+    }
+
+    &::placeholder {
+      color: $light-gray;
     }
   }
 
@@ -99,9 +115,29 @@ $ui-input: '.ui-input';
     transition: width 0.3s ease-out;
   }
 
+  .before-text-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $light-gray;
+    width: $before-icon-size;
+    height: $before-icon-size;
+  }
+
   &_focused, &_has-content {
     &::before {
       width: 100%;
+    }
+
+    .before-text-icon {
+      color: $purple;
+    }
+  }
+
+  &_has-before-icon {
+    input {
+      padding-left: calc($before-icon-size + 20px);
     }
   }
 }

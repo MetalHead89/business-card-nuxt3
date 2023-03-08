@@ -3,15 +3,27 @@
     <h1 class="title">
       Войти
     </h1>
+
     <UiInput
       v-model="form.name"
       label="Логин"
+      before-text-icon="mdiAccountOutline"
+      placeholder="Введите логин"
     />
+
     <UiInput
       v-model="form.password"
       type="password"
       label="Пароль"
+      before-text-icon="mdiLockOutline"
+      placeholder="Введите пароль"
     />
+
+    <div class="form-row">
+      <UiButton>
+        Войти
+      </UiButton>
+    </div>
   </div>
 </template>
 

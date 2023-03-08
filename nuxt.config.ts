@@ -9,6 +9,18 @@ export default defineNuxtConfig({
 
   css: ['@/assets/styles/global.scss'],
 
+  // css: ['@/assets/styles/global.scss', '@fortawesome/fontawesome-svg-core/styles.css'],
+
+  // build: {
+  //   transpile: [
+  //     '@fortawesome/fontawesome-svg-core',
+  //     '@fortawesome/free-brands-svg-icons',
+  //     '@fortawesome/free-regular-svg-icons',
+  //     '@fortawesome/free-solid-svg-icons',
+  //     '@fortawesome/vue-fontawesome'
+  //   ]
+  // },
+
   vite: {
     css: {
       preprocessorOptions: {
