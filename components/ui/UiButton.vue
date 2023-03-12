@@ -1,10 +1,14 @@
 <template>
-  <button class="ui-button">
+  <button
+    class="ui-button"
+    @click="emit('click')"
+  >
     <slot />
   </button>
 </template>
 
 <script setup>
+const emit = defineEmits(['click'])
 </script>
 
 <styles lang="scss" scoped>
@@ -14,7 +18,7 @@
     border: none;
     border-radius: 50px;
     width: 100%;
-    background: linear-gradient(90deg, #fc00ff 0%, #00dbde 50%, #fc00ff 100%);
+    background: $purple-blue-purple-gradient;
     background-position: 100% 0;
     background-size: 200%;
     padding: 15px 10px;

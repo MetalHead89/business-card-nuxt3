@@ -16,6 +16,7 @@
   "dependencies": {
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^7.1.96",
+    "firebase": "^9.17.2",
     "normalize.css": "^8.0.1"
   }
 }

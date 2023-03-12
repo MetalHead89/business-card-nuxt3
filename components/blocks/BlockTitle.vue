@@ -4,11 +4,6 @@
   </div>
 </template>
 
-<script setup>
-const nuxtApp = useNuxtApp()
-nuxtApp.$api.test.testMethod()
-</script>
-
 <style lang="scss" scoped>
   .mh-title-block {
     width: 100%;

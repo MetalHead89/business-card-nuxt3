@@ -1,9 +1,9 @@
-import test from '@/api/test.js'
+import auth from '@/api/auth.js'
 
 export default defineNuxtPlugin(nuxtApp => {
 
   nuxtApp.provide('api', {
-    test: test(nuxtApp)
+    auth: auth(nuxtApp)
   })
 })
 

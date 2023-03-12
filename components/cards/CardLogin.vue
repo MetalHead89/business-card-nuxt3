@@ -20,7 +20,7 @@
     />
 
     <div class="form-row">
-      <UiButton>
+      <UiButton @click="handleLoginButtonClick">
         Войти
       </UiButton>
     </div>
@@ -30,10 +30,18 @@
 <script setup>
 import { reactive } from 'vue'
 
+const nuxtApp = useNuxtApp()
+
 const form = reactive({
   name: '',
   password: ''
 })
+
+const handleLoginButtonClick = () => {
+  nuxtApp.$api.auth.auth().then(data => {
+    console.dir(data)
+  })
+}
 </script>
 
 <style lang="scss" scope>
