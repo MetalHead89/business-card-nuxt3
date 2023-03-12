@@ -5,10 +5,10 @@
     </h1>
 
     <UiInput
-      v-model="form.name"
-      label="Логин"
+      v-model="form.email"
+      label="Email"
       before-text-icon="mdiAccountOutline"
-      placeholder="Введите логин"
+      placeholder="Введите email"
     />
 
     <UiInput
@@ -33,12 +33,12 @@ import { reactive } from 'vue'
 const nuxtApp = useNuxtApp()
 
 const form = reactive({
-  name: '',
+  email: '',
   password: ''
 })
 
 const handleLoginButtonClick = () => {
-  nuxtApp.$api.auth.auth().then(data => {
+  nuxtApp.$api.auth.auth(form).then(data => {
     console.dir(data)
   })
 }
