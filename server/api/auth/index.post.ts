@@ -1,20 +1,16 @@
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '@/server/firebase'
-// import { firestore } from '@/server/firebase'
-// import { collection, getDocs } from 'firebase/firestore'
+import { auth } from '@/server/db/controllers/auth'
 
 export default defineEventHandler(async event => {
   const body = await readBody(event)
-  const userCredential = await signInWithEmailAndPassword(auth, body.email, body.password  )
-  console.dir(userCredential)
-  return body
-  // const userCredential = await signInWithEmailAndPassword(auth)
-  // console.dir(userCredential)
-  // const querySnap = await getDocs(collection(firestore, 'users'))
-  // const users: any[] = []
-  // querySnap.forEach(doc => {
-  //   users.push(doc.data())
-  // })
+  const userCredential = await auth(body)
 
-  // return users
+  if (!userCredential?.isValid) {
+    return createError({ ...userCredential })
+  }
+  // throw createError({
+  //   statusCode: userCredential?.statusCode
+  // })
+  // console.dir(userCredential)
+  // setResponseStatus(userCredential?.errors, userCredential?.statusCode)
+  // return userCredential
 })
