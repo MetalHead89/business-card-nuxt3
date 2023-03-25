@@ -19,6 +19,7 @@
         @blur="handleInputBlur"
       >
     </div>
+    <UiError :errors="[errorMessage]" />
   </LayoutControlWrapper>
 </template>
 
@@ -50,6 +51,11 @@ const props = defineProps({
   },
 
   beforeTextIcon: {
+    type: String,
+    default: ''
+  },
+
+  errorMessage: {
     type: String,
     default: ''
   }

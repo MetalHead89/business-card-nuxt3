@@ -5,14 +5,16 @@
     </h1>
 
     <UiInput
-      v-model="form.email"
+      v-model="email"
+      :error-message="emailError"
       label="Email"
       before-text-icon="mdiAccountOutline"
       placeholder="Введите email"
     />
 
     <UiInput
-      v-model="form.password"
+      v-model="password"
+      :error-message="passwordError"
       type="password"
       label="Пароль"
       before-text-icon="mdiLockOutline"
@@ -28,20 +30,28 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { useField } from 'vee-validate'
 
 const nuxtApp = useNuxtApp()
-
-const form = reactive({
-  email: '',
-  password: ''
-})
 
 const handleLoginButtonClick = () => {
   nuxtApp.$api.auth.auth(form).then(data => {
     console.dir(data)
   })
 }
+
+// Validation
+
+const requireValidation = value => {
+  if (!value) {
+    return 'Не может быть пустым'
+  }
+
+  return true
+}
+
+const { errorMessage: emailError, value: email } = useField('email', requireValidation)
+const { errorMessage: passwordError, value: password } = useField('password', requireValidation)
 </script>
 
 <style lang="scss" scope>
