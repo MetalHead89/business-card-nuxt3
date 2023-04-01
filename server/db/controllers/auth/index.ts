@@ -8,7 +8,6 @@ export async function auth(payload: authDataType) {
   if (!isValid) {
     return { statusCode: 400, message: 'Заполните обязательные поля', data, isValid }
   }
-  console.dir(authDataValidator(payload))
 
   // return await signInWithEmailAndPassword(fbAuth, email, password  )
 }

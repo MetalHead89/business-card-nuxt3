@@ -1,7 +1,7 @@
 <template>
   <component
     :is="wrapperTag"
-    :class="wrapperClasses"
+    class="control-wrapper"
   >
     <slot name="label">
       <span v-if="label">{{ label }}</span>
@@ -20,17 +20,7 @@ const props = defineProps({
   label: {
     type: String,
     default: ''
-  },
-
-  isFormControl: {
-    type: Boolean,
-    default: true
   }
-})
-
-const wrapperClasses = computed(() => {
-  const BASE_CLASS = 'control-wrapper'
-  return [BASE_CLASS, props.isFormControl && 'form-row']
 })
 </script>
 

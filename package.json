@@ -19,6 +19,7 @@
     "firebase": "^9.17.2",
     "joi": "^17.8.4",
     "normalize.css": "^8.0.1",
-    "vee-validate": "^4.8.4"
+    "vee-validate": "^4.8.4",
+    "yup": "^1.0.2"
   }
 }

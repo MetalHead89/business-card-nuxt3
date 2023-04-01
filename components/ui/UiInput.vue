@@ -1,7 +1,6 @@
 <template>
   <LayoutControlWrapper
     :label="label"
-    :is-form-control="isFormControl"
   >
     <div :class="inputContainerClasses">
       <UiSvgIcon
@@ -11,15 +10,14 @@
       />
 
       <input
-        :value="modelValue"
+        v-model="value"
         v-bind="$attrs"
         autocomplete="new-password"
-        @input="handleInputInput"
         @focus="handleInputFocus"
         @blur="handleInputBlur"
       >
     </div>
-    <UiError :errors="[errorMessage]" />
+    <UiError :error="errorMessage" />
   </LayoutControlWrapper>
 </template>
 
@@ -31,18 +29,12 @@ export default {
 
 <script setup>
 import { ref, computed } from 'vue'
-
-const emit = defineEmits(['update:modelValue'])
+import { useField } from 'vee-validate'
 
 const props = defineProps({
-  modelValue: {
-    type: [String, Number],
-    default: ''
-  },
-
-  isFormControl: {
-    type: Boolean,
-    default: true
+  name: {
+    type: String,
+    required: true
   },
 
   label: {
@@ -51,11 +43,6 @@ const props = defineProps({
   },
 
   beforeTextIcon: {
-    type: String,
-    default: ''
-  },
-
-  errorMessage: {
     type: String,
     default: ''
   }
@@ -81,9 +68,9 @@ const handleInputBlur = () => {
   isFocus.value = false
 }
 
-const handleInputInput = ({ target: { value } }) => {
-  emit('update:modelValue', value)
-}
+// Validation
+
+const { value, errorMessage } = useField (props.name)
 </script>
 
 <style lang="scss">
