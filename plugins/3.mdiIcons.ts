@@ -1,9 +1,11 @@
-import { mdiAccountOutline, mdiLockOutline } from '@mdi/js'
+import { mdiAccountOutline, mdiLockOutline, mdiCheck, mdiWindowClose } from '@mdi/js'
 
 export default defineNuxtPlugin(nuxtApp => {
 
   nuxtApp.provide('mdiIcons', {
     mdiAccountOutline,
-    mdiLockOutline
+    mdiLockOutline,
+    mdiCheck,
+    mdiWindowClose
   })
 })

@@ -1,6 +1,7 @@
 <template>
   <div class="login-page">
     <CardLogin />
+    <UiSnackbarList />
   </div>
 </template>
 
