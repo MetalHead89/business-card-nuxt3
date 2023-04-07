@@ -27,28 +27,25 @@
 </template>
 
 <script setup lang="ts">
+import { SnackbarType, SnackbarIcons } from '@/types/ui'
+
 // Types
 
-type SnackbarTypeType = 'warning' | 'success'
-
-export type SnackbarType = {
-  type?: SnackbarTypeType,
+export type Snackbar = {
+  id: number,
+  type?: SnackbarType,
   title?: string,
   text?: string
 }
 
-type IconsType = {
-  [key in SnackbarTypeType]: string
-}
+// Common
 
-const ICONS: IconsType = {
+const ICONS: SnackbarIcons = {
   success: 'mdiCheck',
   warning: 'mdiCheck'
 }
 
-// Common
-
-const props = withDefaults(defineProps<SnackbarType>(), {
+const props = withDefaults(defineProps<Snackbar>(), {
   type: 'success',
   title: '',
   text: ''

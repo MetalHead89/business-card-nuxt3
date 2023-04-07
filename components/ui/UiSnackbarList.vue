@@ -5,7 +5,7 @@
     >
       <li
         v-for="item in items"
-        :key="item"
+        :key="item.id"
         class="item"
       >
         <UiSnackbar
@@ -18,59 +18,66 @@
 </template>
 
 <script setup lang="ts">
-import { SnackbarType } from './UiSnackbar.vue'
+import { Snackbar } from './UiSnackbar.vue'
 
-const items = ref<SnackbarType[]>([
+const items = ref<Snackbar[]>([
   {
+    id: 1,
     title: 'First',
     text: 'First text'
   },
   {
+    id: 2,
     title: 'Second',
     text: 'Second text'
   },
   {
+    id: 3,
     title: 'Third',
     text: 'Third text'
   }
 ])
 
-const handleCloseClick = (item: SnackbarType) => {
+const handleCloseClick = (item: Snackbar) => {
   items.value = items.value.filter(currentItem => currentItem !== item)
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .snackbar-list {
   padding: 0;
   position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
   gap: 10px;
   bottom: 20px;
   margin: 0 auto;
   max-width: 50%;
 
-.list-move,
+  .item {
+    list-style-type: none;
+  }
+}
+
 .list-enter-active,
-.list-leave-active {
-  transition: all 0.5s ease;
+.list-move {
+  transition: all 2s ease;
 }
 
 .list-enter-from,
 .list-leave-to {
   opacity: 0;
-  transform: translateX(30px);
+  transform: scale(0.6);
+}
+
+.list-enter-to,
+.list-leave-from {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .list-leave-active {
   position: absolute;
-}
-
-  .item {
-    list-style-type: none;
-  }
 }
 </style>
