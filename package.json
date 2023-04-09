@@ -16,9 +16,12 @@
   "dependencies": {
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^7.1.96",
+    "@types/uuid": "^9.0.1",
     "firebase": "^9.17.2",
     "joi": "^17.8.4",
+    "mitt": "^3.0.0",
     "normalize.css": "^8.0.1",
+    "uuid": "^9.0.0",
     "vee-validate": "^4.8.4",
     "yup": "^1.0.2"
   }

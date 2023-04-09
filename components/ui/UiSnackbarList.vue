@@ -18,28 +18,23 @@
 </template>
 
 <script setup lang="ts">
-import { Snackbar } from './UiSnackbar.vue'
+import { ISnackbar, ISnackbarArgs } from '@/types/ui'
+import { v4 as uuidv4 } from 'uuid'
 
-const items = ref<Snackbar[]>([
-  {
-    id: 1,
-    title: 'First',
-    text: 'First text'
-  },
-  {
-    id: 2,
-    title: 'Second',
-    text: 'Second text'
-  },
-  {
-    id: 3,
-    title: 'Third',
-    text: 'Third text'
-  }
-])
+const { $eventBus } = useNuxtApp()
 
-const handleCloseClick = (item: Snackbar) => {
+$eventBus.listen('snackbar-add', (args: ISnackbarArgs) => {
+  add(args)
+})
+
+const items = ref<ISnackbar[]>([])
+
+const handleCloseClick = (item: ISnackbar) => {
   items.value = items.value.filter(currentItem => currentItem !== item)
+}
+
+const add = (args: ISnackbarArgs) => {
+  items.value.push({ ...args, id: uuidv4() })
 }
 </script>
 
@@ -60,24 +55,19 @@ const handleCloseClick = (item: Snackbar) => {
   }
 }
 
+.list-move,
 .list-enter-active,
-.list-move {
-  transition: all 2s ease;
+.list-leave-active {
+  transition: all 0.5s ease;
 }
 
 .list-enter-from,
 .list-leave-to {
   opacity: 0;
-  transform: scale(0.6);
+  transform: scale(0)
 }
 
-.list-enter-to,
-.list-leave-from {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.list-leave-active {
-  position: absolute;
-}
+// .list-leave-active {
+//   position: absolute;
+// }
 </style>

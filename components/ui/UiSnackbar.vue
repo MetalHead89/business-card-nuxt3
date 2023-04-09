@@ -27,12 +27,12 @@
 </template>
 
 <script setup lang="ts">
-import { SnackbarType, SnackbarIcons } from '@/types/ui'
+import { SnackbarIcons, SnackbarType } from '@/types/ui'
 
 // Types
 
-export type Snackbar = {
-  id: number,
+interface ISnackbar {
+  id: string,
   type?: SnackbarType,
   title?: string,
   text?: string
@@ -45,7 +45,7 @@ const ICONS: SnackbarIcons = {
   warning: 'mdiCheck'
 }
 
-const props = withDefaults(defineProps<Snackbar>(), {
+const props = withDefaults(defineProps<ISnackbar>(), {
   type: 'success',
   title: '',
   text: ''

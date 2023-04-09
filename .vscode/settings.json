@@ -3,6 +3,7 @@
     "Firestore",
     "fontawesome",
     "fortawesome",
-    "nuxt"
+    "nuxt",
+    "uuidv"
   ]
 }
