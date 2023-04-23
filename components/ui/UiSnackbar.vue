@@ -42,7 +42,7 @@ interface ISnackbar {
 
 const ICONS: SnackbarIcons = {
   success: 'mdiCheck',
-  warning: 'mdiCheck'
+  error : 'mdiClose'
 }
 
 const props = withDefaults(defineProps<ISnackbar>(), {
@@ -86,6 +86,7 @@ $icon-size: 40px;
   gap: 5px;
   padding: 15px $side-indent;
   border-radius: 20px;
+  color: $white;
 
   .title {
     margin: 0;
@@ -109,15 +110,24 @@ $icon-size: 40px;
     left: calc(#{$side-indent} / 2);
     top: 50%;
     transform: translate(-50%, -50%);
+    background: $white;
   }
 
   &_success {
-    background: $success;
-    color: $white;
+    $theme-color: $success;
 
+    background: $theme-color;
     .icon {
-      background: $white;
-      color: $success;
+      color: $theme-color;
+    }
+  }
+
+  &_error {
+    $theme-color: $error;
+
+    background: $theme-color;
+    .icon {
+      color: $theme-color;
     }
   }
 }

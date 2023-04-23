@@ -1,6 +1,6 @@
 // Snackbar
 
-export type SnackbarType = 'warning' | 'success'
+export type SnackbarType = 'error' | 'success'
 
 export interface ISnackbarArgs {
   type?: SnackbarType,

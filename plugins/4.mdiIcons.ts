@@ -1,4 +1,4 @@
-import { mdiAccountOutline, mdiLockOutline, mdiCheck, mdiWindowClose } from '@mdi/js'
+import { mdiAccountOutline, mdiLockOutline, mdiCheck, mdiWindowClose, mdiClose } from '@mdi/js'
 
 export default defineNuxtPlugin(nuxtApp => {
 
@@ -6,6 +6,7 @@ export default defineNuxtPlugin(nuxtApp => {
     mdiAccountOutline,
     mdiLockOutline,
     mdiCheck,
-    mdiWindowClose
+    mdiWindowClose,
+    mdiClose
   })
 })

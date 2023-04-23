@@ -1,12 +1,12 @@
 const BASE_URL = 'http://localhost:3000'
 
 const handleResponseError = ({ response, $eventBus  }: any) => {
-  if (response) {
-    $eventBus.event('snackbar-add', { title: 'Kek!' })
+  if (!response) {
+    $eventBus.event('snackbar-add', { type: 'error', title: 'Упс', text: 'Похоже нет связи с сервером' })
     return Promise.reject()
   }
 
-  $eventBus.event('snackbar-add')
+  $eventBus.event('snackbar-add', { type: 'error', title: 'Ошибка', text: 'sdfd fdddd dfdf' })
   return Promise.reject()
 }
 
@@ -16,7 +16,6 @@ export default defineNuxtPlugin(nuxtApp => {
 
   const fetchService = {
     get: (path: string) => fetch(path, { method: 'get', baseURL: BASE_URL }),
-    // eslint-disable-next-line max-len
     post: (path: string, body: Object) => fetch(path, { method: 'post', body, baseURL: BASE_URL })
   }
 
