@@ -6,7 +6,15 @@ const handleResponseError = ({ response, $eventBus  }: any) => {
     return Promise.reject()
   }
 
-  $eventBus.event('snackbar-add', { type: 'error', title: 'Ошибка', text: 'sdfd fdddd dfdf' })
+  let errorMessage = ''
+
+  try {
+    errorMessage = response.response._data.data.errorMessage
+  } catch {
+    errorMessage = 'Произошла непредвиденная ошибка'
+  }
+
+  $eventBus.event('snackbar-add', { type: 'error', title: 'Ошибка', text: errorMessage })
   return Promise.reject()
 }
 
