@@ -23,7 +23,10 @@
     />
 
     <div class="form-row">
-      <UiButton type="submit">
+      <UiButton
+        type="submit"
+        :is-loading="isLoading"
+      >
         Войти
       </UiButton>
     </div>
@@ -32,6 +35,8 @@
 
 <script setup>
 import { useForm } from 'vee-validate'
+
+let isLoading = ref(false)
 
 // validation
 const validationSchema = {
@@ -61,9 +66,13 @@ const { handleSubmit } = useForm({
 const nuxtApp = useNuxtApp()
 
 const onSubmit = handleSubmit(formData => {
-  nuxtApp.$api.auth.auth(formData).then(data => {
-    console.dir(data)
-  })
+  isLoading.value = true
+
+  nuxtApp.$api.auth.auth(formData)
+    .then(data => {
+      console.dir(data)
+    })
+    .finally(() => { isLoading.value = false })
 })
 </script>
 
