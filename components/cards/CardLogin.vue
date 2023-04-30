@@ -36,7 +36,7 @@
 <script setup>
 import { useForm } from 'vee-validate'
 
-let isLoading = ref(false)
+const isLoading = ref(false)
 
 // validation
 const validationSchema = {

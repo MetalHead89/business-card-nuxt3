@@ -48,10 +48,11 @@ const add = (args: ISnackbarArgs) => {
   gap: 10px;
   bottom: 20px;
   margin: 0 auto;
-  max-width: 50%;
+  width: 25%;
 
   .item {
     list-style-type: none;
+    width: 100%;
   }
 }
 
@@ -67,7 +68,7 @@ const add = (args: ISnackbarArgs) => {
   transform: scale(0)
 }
 
-// .list-leave-active {
-//   position: absolute;
-// }
+.list-leave-active {
+  position: absolute;
+}
 </style>

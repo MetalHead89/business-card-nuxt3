@@ -56,7 +56,7 @@ const props = withDefaults(defineProps<ISnackbar>(), {
   type: 'success',
   title: '',
   text: '',
-  time: 5000
+  time: 0
 })
 
 const emit = defineEmits(['click'])
@@ -129,6 +129,7 @@ $side-indent: 80px;
 $icon-size: 40px;
 
 .snackbar {
+  box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -136,6 +137,7 @@ $icon-size: 40px;
   padding: 15px $side-indent;
   border-radius: 20px;
   color: $white;
+  width: 100%;
 
   .title {
     margin: 0;
