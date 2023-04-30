@@ -56,7 +56,7 @@ const props = withDefaults(defineProps<ISnackbar>(), {
   type: 'success',
   title: '',
   text: '',
-  time: 0
+  time: 5000
 })
 
 const emit = defineEmits(['click'])

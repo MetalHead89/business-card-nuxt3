@@ -1,13 +1,15 @@
 <template>
   <div class="error">
-    <TransitionGroup name="error">
-      <div
-        v-if="error"
-        class="message"
-      >
-        {{ error }}
-      </div>
-    </TransitionGroup>
+    <ClientOnly>
+      <TransitionGroup name="error">
+        <div
+          v-if="error"
+          class="message"
+        >
+          {{ error }}
+        </div>
+      </TransitionGroup>
+    </ClientOnly>
   </div>
 </template>
 
