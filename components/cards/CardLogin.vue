@@ -35,8 +35,18 @@
 
 <script setup>
 import { useForm } from 'vee-validate'
+import useFirebase from '@/composables/firebase'
 
 const isLoading = ref(false)
+const router = useRouter()
+const { fbAuth, signInWithEmailAndPassword, signOut } = useFirebase() || {}
+const { $eventBus } = useNuxtApp()
+const authErrorsCodes = [
+  'auth/invalid-email',
+  'auth/wrong-password',
+  'auth/user-disabled',
+  'auth/user-not-found'
+]
 
 // validation
 const validationSchema = {
@@ -68,12 +78,36 @@ const nuxtApp = useNuxtApp()
 const onSubmit = handleSubmit(formData => {
   isLoading.value = true
 
-  nuxtApp.$api.auth.auth(formData)
-    .then(data => {
-      console.dir(data)
+  signInWithEmailAndPassword(fbAuth, formData.email, formData.password)
+    .then(({ user }) => {
+      auth(user)
+    })
+    .catch(({ code }) => {
+      showErrorMessage(code)
     })
     .finally(() => { isLoading.value = false })
 })
+
+const showErrorMessage = code => {
+  let errorMessage = 'Возникла ошибка во время авторизации. Попробуйте войти позже'
+
+  if (code && authErrorsCodes.includes(code)) {
+    errorMessage = 'Неверные email или пароль'
+  }
+
+  $eventBus.event('snackbar-add', { type: 'error', title: 'Ошибка', text: errorMessage })
+}
+
+const auth = user => {
+  user.getIdToken()
+    .then(idToken => {
+      nuxtApp.$api.auth.auth({ idToken })
+        .then(() => {
+          signOut(fbAuth)
+          router.push({ name: nuxtApp.$cmsConfig.startPage })
+        })
+    })
+}
 </script>
 
 <style lang="scss" scope>

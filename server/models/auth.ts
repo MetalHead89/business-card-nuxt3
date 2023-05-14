@@ -1,27 +1,27 @@
-import { fbAuth } from '@/server/models/firebase'
-import { authDataType } from '@/server/types/auth'
-import { signInWithEmailAndPassword } from 'firebase/auth'
 
-export default function({ email, password }: authDataType) {
-  return signInWithEmailAndPassword(fbAuth, email, password )
-    .catch(({ code }) => {
-      switch(code) {
-        case 'auth/user-not-found':
-          return Promise.reject({
-            statusCode: 400,
-            data: {
-              errorMessage: 'Неверные email или пароль',
-              errors: []
-            }
-          })
-        default:
-          return Promise.reject({
-            statusCode: 500,
-            data: {
-              errorMessage: 'Произошла непредвиденная ошибка',
-              errors: []
-            }
-          })
+import { authDataType } from '@/server/types/auth'
+import { app } from '@/server/models/firebase'
+import { getAuth } from 'firebase-admin/auth'
+
+export default ({ idToken }: authDataType) => {
+  const expiresIn = 60 * 60 * 24 * 5 * 1000
+
+  return getAuth(app).createSessionCookie(idToken, { expiresIn })
+    .then(sessionCookie => {
+      const cookies = {
+        name: 'session',
+        data: sessionCookie,
+        options: { maxAge: expiresIn, httpOnly: true }
       }
+      return Promise.resolve(cookies)
+    })
+    .catch(() => {
+      return Promise.reject({
+        statusCode: 401,
+        data: {
+          errorMessage: 'Неавторизованный запрос',
+          errors: []
+        }
+      })
     })
 }

@@ -1,4 +1,3 @@
 export type authDataType = {
-  email: string,
-  password: string
+  idToken: string
 }

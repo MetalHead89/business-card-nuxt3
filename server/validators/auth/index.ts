@@ -1,12 +1,12 @@
 import validator from '@/server/validators/validator'
 import { authDataSchema } from '@/server/schemas/auth'
 import { authDataType } from '@/server/types/auth'
-import Joi from 'joi'
+// import Joi from 'joi'
 
-const ERROR_MESSAGES = {
-  email: 'Поле \'Email\' не может быть пустым',
-  password: 'Поле \'Пароль\' не может быть пустым'
-}
+// const ERROR_MESSAGES = {
+//   email: 'Поле \'Email\' не может быть пустым',
+//   password: 'Поле \'Пароль\' не может быть пустым'
+// }
 
 export default function(payload: authDataType) {
   return new Promise((resolve, reject) => {
@@ -20,17 +20,18 @@ export default function(payload: authDataType) {
       statusCode: 400,
       data: {
         errorMessage: 'Ошибка. Неверные данные',
-        errors: error.details.map(errorDetails => getErrorDescription(errorDetails))
+        errors: []
+        // errors: error.details.map(errorDetails => getErrorDescription(errorDetails))
       }
     })
   })
 }
 
-function getErrorDescription(error: Joi.ValidationErrorItem) {
-  const path = error.path[0]
+// function getErrorDescription(error: Joi.ValidationErrorItem) {
+//   const path = error.path[0]
 
-  return {
-    path,
-    messages: [ERROR_MESSAGES[path as keyof authDataType]]
-  }
-}
+//   return {
+//     path,
+//     messages: [ERROR_MESSAGES[path as keyof authDataType]]
+//   }
+// }

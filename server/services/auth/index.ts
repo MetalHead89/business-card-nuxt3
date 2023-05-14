@@ -8,6 +8,7 @@ export async function auth(payload: authDataType) {
   return authDataValidator(payload)
     .then(() => {
       return authModel(payload)
+        .then(data => Promise.resolve(data))
     })
     .catch((error: ValidatorErrorResponse) => Promise.reject(error))
 }
