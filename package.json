@@ -16,14 +16,19 @@
   "dependencies": {
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^7.1.96",
+    "@pinia/nuxt": "^0.4.10",
     "@types/uuid": "^9.0.1",
     "firebase": "^9.17.2",
     "firebase-admin": "^11.8.0",
     "joi": "^17.8.4",
     "mitt": "^3.0.0",
     "normalize.css": "^8.0.1",
+    "pinia": "^2.0.36",
     "uuid": "^9.0.0",
     "vee-validate": "^4.8.4",
     "yup": "^1.0.2"
+  },
+  "overrides": {
+    "vue": "latest"
   }
 }

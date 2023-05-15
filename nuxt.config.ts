@@ -4,7 +4,14 @@ export default defineNuxtConfig({
     '~/components',
     { path: '~/components/layouts', prefix: 'Layout' },
     { path: '~/components/blocks', prefix: 'Block' },
-    { path: '~/components/cards', prefix: 'Card' }
+    { path: '~/components/cards', prefix: 'Card' },
+
+    //cms
+    { path: '~/components/cms/layouts', prefix: 'Cms' }
+  ],
+
+  modules: [
+    '@pinia/nuxt'
   ],
 
   runtimeConfig: {
