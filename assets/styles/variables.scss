@@ -3,6 +3,7 @@ $blue:                                                                          
 $purple:                                                                                          #ab00ff;
 $white:                                                                                           #ffffff;
 $black:                                                                                           #000000;
+$lighten-black-30:                                                                                  lighten($black, 30);
 $muted-gray:                                                                                      #d9d9d9;
 $light-gray:                                                                                      #c2bfba;
 $gray:                                                                                            #7f7f7f;
@@ -30,6 +31,9 @@ $input-padding:                                                                 
 
 
 // cms
+
+// colors
+$cms-shadow:                                                                                      #5e5c9a1a;
 
 // sizes
 $header-height:                                                                                     60px;

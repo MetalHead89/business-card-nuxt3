@@ -4,7 +4,8 @@ import {
   mdiCheck,
   mdiWindowClose,
   mdiClose,
-  mdiMenu
+  mdiMenu,
+  mdiAccountGroup
 } from '@mdi/js'
 
 export default defineNuxtPlugin(nuxtApp => {
@@ -15,6 +16,7 @@ export default defineNuxtPlugin(nuxtApp => {
     mdiCheck,
     mdiWindowClose,
     mdiClose,
-    mdiMenu
+    mdiMenu,
+    mdiAccountGroup
   })
 })
