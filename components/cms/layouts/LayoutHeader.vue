@@ -39,7 +39,7 @@ const handleMenuClick = () => {
       position: fixed;
       display: flex;
       align-items: center;
-      background: white;
+      background: $white;
       top: 0;
       right: 0;
       width: calc(100% - #{$sidebar-expanded-width});
@@ -61,8 +61,17 @@ const handleMenuClick = () => {
     }
 
     @media screen and (min-width: $size-xl) {
+      height: get-vw($header-height);
+
       .content {
         width: calc(100% - get-vw($sidebar-expanded-width));
+        height: get-vw($header-height);
+      }
+
+      .menu-icon {
+        margin: 0 get-vw(10px);
+        width: get-vw($icon-size);
+        height: get-vw($icon-size);
       }
 
       &_full-width {
