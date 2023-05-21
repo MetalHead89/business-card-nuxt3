@@ -59,5 +59,17 @@ const handleMenuClick = () => {
         width: calc(100% - #{$sidebar-collapsed-width});
       }
     }
+
+    @media screen and (min-width: $size-xl) {
+      .content {
+        width: calc(100% - get-vw($sidebar-expanded-width));
+      }
+
+      &_full-width {
+        .content {
+          width: calc(100% - get-vw($sidebar-collapsed-width));
+        }
+      }
+    }
   }
 </style>

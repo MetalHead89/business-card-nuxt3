@@ -16,21 +16,6 @@ const navigation = [
     icon: 'mdiAccountGroup',
     label: 'Пользователи',
     to: { name: 'cms' }
-  },
-  {
-    icon: 'mdiAccountGroup',
-    label: 'Пользователи2',
-    to: { name: 'cms-login' }
-  },
-  {
-    icon: 'mdiAccountGroup',
-    label: 'Пользователи3',
-    to: { name: 'cms-login' }
-  },
-  {
-    icon: 'mdiAccountGroup',
-    label: 'Пользователи4',
-    to: { name: 'cms-login' }
   }
 ]
 </script>

@@ -25,23 +25,36 @@ const sidebarClasses = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-  .sidebar {
-    width: $sidebar-expanded-width;
-    background: $white;
-    box-shadow: 5px 0 25px 0 $cms-shadow;
-    transition: width .3s ease;
-    position: relative;
-    z-index: 100;
+.sidebar {
+  width: $sidebar-expanded-width;
+  background: $white;
+  box-shadow: 5px 0 25px 0 $cms-shadow;
+  transition: width .3s ease;
+  position: relative;
+  z-index: 100;
 
-    &_collapsed {
-      width: $sidebar-collapsed-width;
-    }
+  &_collapsed {
+    width: $sidebar-collapsed-width;
+  }
+
+  .logo {
+    height: $header-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media screen and (min-width: $size-xl) {
+    width: get-vw($sidebar-expanded-width);
+    box-shadow: get-vw(5px) 0 get-vw(25px) 0 $cms-shadow;
 
     .logo {
-      height: $header-height;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      height: get-vw($header-height);
+    }
+
+    &_collapsed {
+      width: get-vw($sidebar-collapsed-width);
     }
   }
+}
 </style>

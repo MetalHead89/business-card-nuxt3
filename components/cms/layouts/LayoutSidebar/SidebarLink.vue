@@ -8,12 +8,22 @@
         class="icon"
         :icon="icon"
       />
-      {{ label }}
+      <span v-if="isShowLabel">
+        {{ label }}
+      </span>
     </NuxtLink>
   </li>
 </template>
 
 <script setup lang="ts">
+import { useCommonStore } from '@/stores/common'
+
+const commonStore = useCommonStore()
+
+const isShowLabel = computed(() => {
+  return commonStore.isSidebarExpanded
+})
+
 const props = defineProps({
   icon: {
     type: String,
@@ -28,6 +38,7 @@ const props = defineProps({
     default: ''
   }
 })
+
 </script>
 
 <style lang="scss" scoped>
@@ -40,6 +51,7 @@ const props = defineProps({
   padding: 10px;
   color: $lighten-black-30;
   transition: .3s ease;
+  border-radius: 5px;
 
   .icon {
     transition: .3s ease;
@@ -47,10 +59,24 @@ const props = defineProps({
 
   &:hover {
     background: lighten($gray, 40);
-    border-radius: 5px;
 
     .icon {
       color: $blue;
+    }
+  }
+
+  @media screen and (min-width: $size-xl) {
+    margin: get-vw(2px) get-vw(10px);
+    padding: get-vw(10px);
+    gap: get-vw(10px);
+
+    &:hover {
+      border-radius: get-vw(5px);
+    }
+
+    .icon {
+      width: 1.3vw;
+      height: 1.3vw;
     }
   }
 }

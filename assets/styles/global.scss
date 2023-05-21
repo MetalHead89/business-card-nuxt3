@@ -8,6 +8,10 @@ html, body, #__nuxt, #app {
 html {
   font-size: 17px;
   font-family: 'Century Gothic';
+
+  @media screen and (min-width: $size-xl) {
+    font-size: 0.9vw;
+  }
 }
 
 .content-container {
