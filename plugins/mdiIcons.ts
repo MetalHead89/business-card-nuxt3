@@ -5,7 +5,8 @@ import {
   mdiWindowClose,
   mdiClose,
   mdiMenu,
-  mdiAccountGroup
+  mdiAccountGroup,
+  mdiLogout
 } from '@mdi/js'
 
 export default defineNuxtPlugin(nuxtApp => {
@@ -17,6 +18,7 @@ export default defineNuxtPlugin(nuxtApp => {
     mdiWindowClose,
     mdiClose,
     mdiMenu,
-    mdiAccountGroup
+    mdiAccountGroup,
+    mdiLogout
   })
 })

@@ -10,13 +10,19 @@
 </template>
 
 <style lang="scss" scoped>
-  #app {
-    display: flex;
+#app {
+  display: flex;
 
+  main {
+    padding-top: $header-height;
+    background: #ffd3d3;
+    flex-grow: 1;
+  }
+
+  @media screen and (min-width: $size-xl) {
     main {
-      padding-top: $header-height;
-      background: #ffd3d3;
-      flex-grow: 1;
+      padding-top: get-vw($header-height);
     }
   }
+}
 </style>
