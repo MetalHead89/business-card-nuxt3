@@ -15,7 +15,6 @@
 
   main {
     padding-top: $header-height;
-    background: #ffd3d3;
     flex-grow: 1;
   }
 

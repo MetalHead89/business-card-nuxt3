@@ -7,7 +7,10 @@ export default defineNuxtConfig({
     { path: '~/components/cards', prefix: 'Card' },
 
     //cms
-    { path: '~/components/cms/layouts', prefix: 'Cms' }
+    { path: '~/components/cms/layouts', prefix: 'Cms' },
+    { path: '~/components/cms/ui/inputs', prefix: 'Cms' },
+    { path: '~/components/cms/features/form_generator', prefix: 'Cms' },
+    { path: '~/components/cms/features/form_generator/controls', prefix: 'Cms' }
   ],
 
   modules: [

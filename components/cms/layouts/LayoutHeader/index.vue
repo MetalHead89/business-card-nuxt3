@@ -38,9 +38,7 @@ const headerClasses = computed(() => {
   padding: 0 10px;
 
   &_full-width {
-    .content {
-      width: calc(100% - #{$sidebar-collapsed-width});
-    }
+    width: calc(100% - #{$sidebar-collapsed-width});
   }
 
   @media screen and (min-width: $size-xl) {

@@ -1,9 +1,10 @@
+// common styles
+
 // colors
 $blue:                                                                                            #4628ba;
 $purple:                                                                                          #ab00ff;
 $white:                                                                                           #ffffff;
 $black:                                                                                           #000000;
-$lighten-black-30:                                                                                  lighten($black, 30);
 $muted-gray:                                                                                      #d9d9d9;
 $light-gray:                                                                                      #c2bfba;
 $gray:                                                                                            #7f7f7f;
@@ -34,12 +35,16 @@ $input-padding:                                                                 
 
 // colors
 $cms-shadow:                                                                                      #5e5c9a1a;
+$primary:                                                                                           lighten($black, 30);
+$accent:                                                                                          #4628ba;
 
 // sizes
 $size-sm:                                                                                           600px;
 $size-md:                                                                                           900px;
 $size-lg:                                                                                           1200px;
 $size-xl:                                                                                           1800px;
+
+$base-transition:                                                                                   .3s ease;
 
 $header-height:                                                                                     60px;
 $sidebar-expanded-width:                                                                            250px;

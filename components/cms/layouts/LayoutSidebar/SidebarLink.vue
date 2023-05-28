@@ -49,7 +49,7 @@ const props = defineProps({
   text-decoration: none;
   margin: 2px 10px;
   padding: 10px;
-  color: $lighten-black-30;
+  color: $primary;
   transition: .3s ease;
   border-radius: 5px;
 
@@ -61,7 +61,7 @@ const props = defineProps({
     background: lighten($gray, 40);
 
     .icon {
-      color: $blue;
+      color: $accent;
     }
   }
 
